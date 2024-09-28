@@ -24,6 +24,7 @@ public class GetEntry {
                 .when()
                 .get()
                 .then()
+                .statusCode(200)
                 .extract().as(EntityData.class);
         return entity;
     }

@@ -26,6 +26,7 @@ public class CreateTest {
 
     @Test
     public void createEntityTest() {
+
         Addition addition = new Addition("first", 1);
         ArrayList<Integer> list = new ArrayList<>(Arrays.asList(11, 12, 13));
         EntityData entity = new EntityData(addition, list, "First Entity", true);
@@ -34,9 +35,9 @@ public class CreateTest {
                 .basePath("api/create")
                 .body(entity)
                 .post()
-                .then();
+                .then()
+                .statusCode(200);
         Assert.assertNotNull(entity);
-
     }
 
     @Test
@@ -46,7 +47,9 @@ public class CreateTest {
                 .basePath("api/getAll")
                 .queryParam("verified", "true")
                 .get()
-                .then().extract()
+                .then()
+                .statusCode(200)
+                .extract()
                 .body()
                 .jsonPath()
                 .getList("entity", EntityData.class);
@@ -56,7 +59,7 @@ public class CreateTest {
     @Test
     public void getEntityByIdTest() {
         Integer id = getIdEntity();
-        EntityData entity = getEntityByID(id);
+        EntityData entity = getEntityByID(id);//проверка статуса кода внутри метода
         Assert.assertEquals(id, entity.getId());
     }
 
@@ -71,7 +74,8 @@ public class CreateTest {
                 .body(entity)
                 .when()
                 .patch()
-                .then();
+                .then()
+                .statusCode(204);
         EntityData changeEntity = getEntityByID(id);
         Assert.assertNotNull(entity);
         Assert.assertNotNull(changeEntity);

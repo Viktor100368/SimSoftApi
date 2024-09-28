@@ -43,12 +43,4 @@ public class Addition {
         this.additional_number = additional_number;
     }
 
-    @Override
-    public String toString() {
-        return "Addition{" +
-                "id=" + id +
-                ", additional_info='" + additional_info + '\'' +
-                ", additional_number=" + additional_number +
-                '}';
-    }
 }

@@ -67,14 +67,4 @@ public class EntityData {
         this.verified = verified;
     }
 
-    @Override
-    public String toString() {
-        return "CreateEntity{" +
-                "id=" + id +
-                ", addition=" + addition +
-                ", important_numbers=" + important_numbers +
-                ", title='" + title + '\'' +
-                ", verified=" + verified +
-                '}';
-    }
 }
